@@ -1,5 +1,5 @@
 from functools import lru_cache
-from funboost.utils import RedisMixin
+from funboost import RedisMixin
 
 
 class ProxyGetterConfig:

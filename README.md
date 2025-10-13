@@ -1,6 +1,6 @@
 # 1 nb_proxypool
 
-nb_proxypool 代理池power by funboost
+nb_proxypool 代理池powered by funboost
 
 ## 2 运行方式
 
