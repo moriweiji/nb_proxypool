@@ -27,7 +27,7 @@ def check_one_new_proxy(proxy_dict, is_save_to_db=True, exist_proxy=False):
                                                                                         verify=False)
         is_valid = True
     except Exception as e:
-        logger_proxy_error.warning(e)
+        logger_proxy_error.warning(f'{type(e)} ,{e}')
         pass
     new_proxy_str = '旧代理' if exist_proxy else '新代理'
     if is_valid:
@@ -58,5 +58,5 @@ def scan_exists_proxy():
 @boost('show_proxy_count', broker_kind=BrokerEnum.REDIS, concurrent_mode=ConcurrentModeEnum.SINGLE_THREAD)
 def show_proxy_count():
     count = get_redis().zcount(ProxyGetterConfig.PROXY_KEY_IN_REDIS_DEFAULT, 0, time.time())
-    logger.info(f'当前共有 {count} 个 代理')
+    logger.info(f'当前 {ProxyGetterConfig.PROXY_KEY_IN_REDIS_DEFAULT} 键中共有 {count} 个 代理')
     return count
