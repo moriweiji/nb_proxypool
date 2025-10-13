@@ -1,6 +1,6 @@
 import time
 
-from funboost import boost, BrokerEnum, funboost_aps_scheduler
+from funboost import boost, BrokerEnum, funboost_aps_scheduler,ctrl_c_recv
 
 from proxy_from_sites_parse import *
 
@@ -38,8 +38,7 @@ def run_funboost():
     check_one_exist_proxy.consume()  # 消启动费 检测一个旧ip代理
     show_proxy_count.consume()  # # 消启动费显示代理ip数量
 
-    while 1:  # 阻止 funboost_aps_scheduler 守护线程退出
-        time.sleep(10)
+    ctrl_c_recv()
 
 
 if __name__ == '__main__':
