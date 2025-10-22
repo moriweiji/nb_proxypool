@@ -7,8 +7,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-# 导入 API 路由（暂时注释掉，等创建后再启用）
-# from backend.api import public, admin, spider
+# 导入 API 路由
+from backend.api import public, admin, spider
 
 
 # 创建 FastAPI 应用
@@ -46,10 +46,10 @@ async def health_check():
     return {"status": "healthy"}
 
 
-# 注册 API 路由（等创建后启用）
-# app.include_router(public.router)
-# app.include_router(admin.router)
-# app.include_router(spider.router)
+# 注册 API 路由
+app.include_router(public.router)
+app.include_router(admin.router)
+app.include_router(spider.router)
 
 
 if __name__ == "__main__":

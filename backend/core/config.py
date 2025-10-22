@@ -1,37 +1,50 @@
 # coding=utf-8
 """
-代理池配置模块
+代理池配置模块（兼容旧版本）
 
-包含 Redis 配置、代理池配置等
+新版本请使用 backend.core.settings.Settings
+此文件保留以兼容旧代码
 """
 
 from functools import lru_cache
 from funboost import RedisMixin
+from backend.core.settings import settings
 
 
 class ProxyPoolConfig:
-    """代理池配置"""
+    """代理池配置（从 settings 读取）"""
     
-    # Redis 中代理池的键名
-    PROXY_KEY_IN_REDIS_DEFAULT = 'proxy_free'
+    @property
+    def PROXY_KEY_IN_REDIS_DEFAULT(self):
+        return settings.proxy_key
     
-    # 请求超时时间（秒）
-    REQUESTS_TIMEOUT = 5
+    @property
+    def REQUESTS_TIMEOUT(self):
+        return settings.proxy_timeout
     
-    # 代理检测 URL
-    CHECK_PROXY_VALIDITY_URL = 'https://www.baidu.com/'
+    @property
+    def CHECK_PROXY_VALIDITY_URL(self):
+        return settings.proxy_check_url
     
-    # QPS 限制
-    CHECK_NEW_PROXY_QPS = 100
-    CHECK_EXIST_PROXY_QPS = 100
+    @property
+    def CHECK_NEW_PROXY_QPS(self):
+        return settings.check_new_proxy_qps
     
-    # 并发数
-    CHECK_NEW_PROXY_CONCURRENT = 300
-    CHECK_EXIST_PROXY_CONCURRENT = 400
+    @property
+    def CHECK_EXIST_PROXY_QPS(self):
+        return settings.check_exist_proxy_qps
     
-    # 代理扫描间隔（秒）
-    # 代理最后检测时间超过此值将重新检测
-    PROXY_RESCAN_INTERVAL = 5
+    @property
+    def CHECK_NEW_PROXY_CONCURRENT(self):
+        return settings.check_new_proxy_concurrent
+    
+    @property
+    def CHECK_EXIST_PROXY_CONCURRENT(self):
+        return settings.check_exist_proxy_concurrent
+    
+    @property
+    def PROXY_RESCAN_INTERVAL(self):
+        return settings.proxy_rescan_interval
 
 
 @lru_cache()
