@@ -81,22 +81,47 @@ async def get_spider_logs(lines: int = 100):
     """
     import os
     from pathlib import Path
+    import glob
     
-    log_path = Path(settings.log_path) / "proxy_check.log"
+    # 爬虫日志可能在多个位置，按优先级查找
+    possible_paths = [
+        Path(settings.log_path) / "proxy_check.log",  # 配置的日志路径
+        Path("/root/pythonlogs") / "proxy_check.log",  # nb-log 默认路径
+        Path.home() / "pythonlogs" / "proxy_check.log",  # 用户目录
+    ]
     
-    if not log_path.exists():
-        return {"logs": [], "message": "日志文件不存在"}
+    # 也查找 funboost 日志
+    funboost_pattern = str(Path("/root/pythonlogs") / "*.funboost.log")
+    funboost_logs = glob.glob(funboost_pattern)
+    
+    log_path = None
+    for path in possible_paths:
+        if path.exists():
+            log_path = path
+            break
+    
+    # 如果找不到 proxy_check.log，使用 funboost 日志
+    if not log_path and funboost_logs:
+        log_path = Path(sorted(funboost_logs, key=os.path.getmtime, reverse=True)[0])
+    
+    if not log_path or not log_path.exists():
+        return {
+            "logs": ["暂无日志数据", "提示：请先启动爬虫，日志会自动生成"],
+            "message": "日志文件尚未生成",
+            "log_path": str(log_path) if log_path else "未找到"
+        }
     
     try:
-        with open(log_path, 'r', encoding='utf-8') as f:
+        with open(log_path, 'r', encoding='utf-8', errors='ignore') as f:
             all_lines = f.readlines()
             recent_lines = all_lines[-lines:]
         
         return {
             "logs": recent_lines,
             "total_lines": len(all_lines),
-            "returned_lines": len(recent_lines)
+            "returned_lines": len(recent_lines),
+            "log_path": str(log_path)
         }
     except Exception as e:
-        return {"logs": [], "error": str(e)}
+        return {"logs": [], "error": str(e), "log_path": str(log_path)}
 
