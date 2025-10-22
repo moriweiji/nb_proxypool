@@ -75,13 +75,24 @@ vim .env
 ### 5. 一键启动
 
 ```bash
-bash scripts/start.sh
+bash scripts/nb_ip.sh start
 ```
 
 访问：
 - **Web 管理界面**：http://localhost:5173
 - **API 文档**：http://localhost:8000/docs
 - **健康检查**：http://localhost:8000/health
+
+### 6. 管理命令
+
+```bash
+bash scripts/nb_ip.sh help      # 查看帮助
+bash scripts/nb_ip.sh status    # 查看状态
+bash scripts/nb_ip.sh logs      # 查看日志
+bash scripts/nb_ip.sh stop      # 停止服务
+bash scripts/nb_ip.sh restart   # 重启服务
+bash scripts/nb_ip.sh download  # 下载 GeoIP 数据库
+```
 
 ---
 
