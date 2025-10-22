@@ -1,0 +1,72 @@
+[project]
+name = "nb_proxypool"
+version = "2.0.0"
+description = "高性能代理池系统 - 基于 FastAPI + Vue 3"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "nb_proxypool", email = "nb@example.com"}
+]
+keywords = ["proxy", "pool", "crawler", "spider", "fastapi", "vue"]
+
+dependencies = [
+    # Web 框架
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    
+    # 分布式任务
+    "funboost>=34.0",
+    "boost-spider>=0.1.0",
+    
+    # Redis
+    "redis>=5.0.0",
+    
+    # HTTP 客户端
+    "httpx>=0.25.0",
+    "requests>=2.31.0",
+    
+    # GeoIP 地理位置
+    "geoip2>=4.7.0",
+    "maxminddb>=2.2.0",
+    
+    # 日志（nb-log 会自动安装 python-json-logger）
+    "nb-log>=13.9",
+    
+    # HTML 解析
+    "pyquery>=2.0.0",
+    
+    # 工具
+    "python-multipart>=0.0.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.11.0",
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["backend"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.black]
+line-length = 120
+target-version = ["py38"]
+

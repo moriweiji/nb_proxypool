@@ -1,25 +1,78 @@
-# Created by .ignore support plugin (hsz.mobi)
-.idea/
-env_hotels/
-henv/
-venv/
-*.pyc
-app/apis/logs/
-app/logs/
-*.log.*
-*.log
-*.lock
-*.pytest_cache*
-nohup.out
-apidoc/
-node_modules/
-hotelApi/
-my_patch_frame_config0000.py
-my_patch_frame_config_beifen.py
-test_frame/my_patch_frame_config.py
-function_result_web/
-test_frame/my/
-redis_queue_web/
-not_up_git/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.uv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+pythonlogs/
+logs/
+
+# Redis
+dump.rdb
+
+# GeoIP database
+data/GeoLite2-*.mmdb
+data/*.mmdb
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+.cache/
+
+# OS
+Thumbs.db
+.DS_Store
