@@ -76,3 +76,6 @@ htmlcov/
 # OS
 Thumbs.db
 .DS_Store
+
+# Old files (archived)
+old/
