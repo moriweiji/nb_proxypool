@@ -31,7 +31,8 @@ class Settings(BaseSettings):
     
     # ==================== API 配置 ====================
     api_port: int = 8000
-    api_keys: str = "demo_key_12345"  # 多个 key 用逗号分隔
+    frontend_port: int = 5173
+    api_keys: str = "demo_key_12345"  # 多个 key 用逗号分隔（API Token）
     
     # ==================== 日志配置 ====================
     log_path: str = "/root/pythonlogs"
