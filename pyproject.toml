@@ -15,30 +15,24 @@ dependencies = [
     "uvicorn[standard]>=0.24.0",
     "pydantic>=2.5.0",
     "pydantic-settings>=2.1.0",
-    
     # 分布式任务
     "funboost>=34.0",
     "boost-spider>=0.1.0",
-    
     # Redis
     "redis>=5.0.0",
-    
     # HTTP 客户端
     "httpx>=0.25.0",
     "requests>=2.31.0",
-    
     # GeoIP 地理位置
     "geoip2>=4.7.0",
     "maxminddb>=2.2.0",
-    
     # 日志（nb-log 会自动安装 python-json-logger）
     "nb-log>=13.9",
-    
     # HTML 解析
     "pyquery>=2.0.0",
-    
     # 工具
     "python-multipart>=0.0.6",
+    "python-dotenv>=1.0.1",
 ]
 
 [project.optional-dependencies]

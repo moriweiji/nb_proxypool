@@ -62,6 +62,9 @@ start_backend() {
     # 添加 uv 到 PATH
     export PATH="$HOME/.local/bin:$PATH"
     
+    # 设置 PYTHONPATH（funboost 和 nb-log 需要）
+    export PYTHONPATH="$PROJECT_ROOT"
+    
     # 启动后端
     cd "$PROJECT_ROOT"
     nohup uv run uvicorn backend.main:app \
