@@ -4,7 +4,7 @@
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List
 
 
 class SpiderStatusResponse(BaseModel):
@@ -45,5 +45,5 @@ class SiteStatusResponse(BaseModel):
     """站点状态响应"""
     total: int = Field(..., description="总站点数")
     enabled: int = Field(..., description="启用站点数")
-    sites: list[SiteStatusItem] = Field(..., description="站点列表")
+    sites: List[SiteStatusItem] = Field(..., description="站点列表")
 

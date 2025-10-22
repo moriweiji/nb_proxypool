@@ -3,7 +3,7 @@
 代理数据模型
 """
 
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
 
 
@@ -52,7 +52,7 @@ class ProxyListResponse(BaseModel):
     total: int = Field(..., description="总数")
     page: int = Field(..., description="当前页")
     size: int = Field(..., description="每页数量")
-    data: list[ProxyModel] = Field(..., description="代理列表")
+    data: List[ProxyModel] = Field(..., description="代理列表")
 
 
 class StatsResponse(BaseModel):
@@ -76,5 +76,5 @@ class CountryStatsItem(BaseModel):
 class CountryStatsResponse(BaseModel):
     """国家统计响应"""
     total: int = Field(..., description="总数")
-    countries: list[CountryStatsItem] = Field(..., description="各国家统计")
+    countries: List[CountryStatsItem] = Field(..., description="各国家统计")
 
